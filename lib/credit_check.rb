@@ -8,7 +8,11 @@ def luhn(card)
   multiplied_digits = multiply_digits(card_split)
   summed_digits = sum_digits(multiplied_digits)
 
-
+  if summed_digits.reduce(:+) % 10 == 0
+    print "The number #{card} is valid!"
+  else
+    print "The number #{card} is invalid!"
+  end
 end
 
 def split_to_integer(card)
