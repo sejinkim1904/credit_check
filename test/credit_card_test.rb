@@ -6,6 +6,7 @@ require 'pry'
 class CreditCardTest < Minitest::Test
   def setup
     @credit_card = CreditCard.new("5541808923795240", 15000)
+    @sketch_card = CreditCard.new("5541801923795240", 8000000)
   end
 
   def test_it_exists
@@ -23,5 +24,6 @@ class CreditCardTest < Minitest::Test
 
   def test_it_can_check_if_a_card_is_valid
     assert_equal true, @credit_card.is_valid?
+    assert_equal false, @sketch_card.is_valid?
   end
 end
