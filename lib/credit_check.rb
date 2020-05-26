@@ -7,7 +7,7 @@ def luhn(card)
   card_split = split_to_integer(card)
   multiplied_digits = multiply_digits(card_split)
   summed_digits = sum_digits(multiplied_digits)
-# binding.pry
+
 
 end
 
@@ -29,12 +29,14 @@ end
 
 def sum_digits(digits)
   digits.map do |digit|
-    binding.pry
-    if digit.length == 2
-
+    if digit.to_s.length == 2
+      digit.to_s.chars.map { |num| num.to_i }.reduce(:+)
+    else
+      digit
     end
   end
 end
+
 luhn(card_number)
 # Output
 ## If it is valid, print "The number [card number] is valid!"
