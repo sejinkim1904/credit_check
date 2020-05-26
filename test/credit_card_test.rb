@@ -16,4 +16,8 @@ class CreditCardTest < Minitest::Test
     assert_equal "5541808923795240", @credit_card.card_number
     assert_equal 15000, @credit_card.limit
   end
+
+  def test_it_can_get_last_four
+    assert_equal "5240", @credit_card.last_four
+  end
 end
