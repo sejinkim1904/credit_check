@@ -26,4 +26,9 @@ class CreditCardTest < Minitest::Test
     assert_equal true, @credit_card.is_valid?
     assert_equal false, @sketch_card.is_valid?
   end
+
+  def test_it_can_split_to_integers
+    split = [5, 5, 4, 1, 8, 0, 8, 9, 2, 3, 7, 9, 5, 2, 4, 0]
+    assert_equal split, @credit_card.split_to_integer(@credit_card.card_number)
+  end
 end
