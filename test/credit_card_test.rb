@@ -36,4 +36,9 @@ class CreditCardTest < Minitest::Test
     result = [10, 5, 8, 1, 16, 0, 16, 9, 4, 3, 14, 9, 10, 2, 8, 0]
     assert_equal result, @credit_card.multiply_digits(@credit_card.card_number)
   end
+
+  def test_it_can_sum_digits
+    result = [1, 5, 8, 1, 7, 0, 7, 9, 4, 3, 5, 9, 1, 2, 8, 0]
+    assert_equal result, @credit_card.sum_digits(@credit_card.card_number)
+  end
 end
