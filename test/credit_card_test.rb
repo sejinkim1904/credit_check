@@ -28,7 +28,12 @@ class CreditCardTest < Minitest::Test
   end
 
   def test_it_can_split_to_integers
-    split = [5, 5, 4, 1, 8, 0, 8, 9, 2, 3, 7, 9, 5, 2, 4, 0]
-    assert_equal split, @credit_card.split_to_integer(@credit_card.card_number)
+    result = [5, 5, 4, 1, 8, 0, 8, 9, 2, 3, 7, 9, 5, 2, 4, 0]
+    assert_equal result, @credit_card.split_to_integer(@credit_card.card_number)
+  end
+
+  def test_it_can_multiply_digits
+    result = [10, 5, 8, 1, 16, 0, 16, 9, 4, 3, 14, 9, 10, 2, 8, 0]
+    assert_equal result, @credit_card.multiply_digits(@credit_card.card_number)
   end
 end
