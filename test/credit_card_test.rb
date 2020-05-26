@@ -20,4 +20,8 @@ class CreditCardTest < Minitest::Test
   def test_it_can_get_last_four
     assert_equal "5240", @credit_card.last_four
   end
+
+  def test_it_can_check_if_a_card_is_valid
+    assert_equal true, @credit_card.is_valid?
+  end
 end
