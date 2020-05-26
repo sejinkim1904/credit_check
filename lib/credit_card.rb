@@ -1,7 +1,7 @@
 class CreditCard
   attr_reader :card_number, :limit
 
-  def initialize(card_number, limit)
+  def initialize(card_number, limit = 0)
     @card_number = card_number
     @limit = limit
   end
