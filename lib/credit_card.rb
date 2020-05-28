@@ -11,7 +11,11 @@ class CreditCard
   end
 
   def is_valid?
-    sum_digits(@card_number).reduce(:+) % 10 == 0
+    number = @card_number[0..-2]
+    check_digit = @card_number[-1]
+    sum_digit = sum_digits(number.reverse)
+
+    (sum_digit.sum + check_digit.to_i) % 10 == 0
   end
 
   def split_to_integer(card)
@@ -22,7 +26,7 @@ class CreditCard
 
   def multiply_digits(card)
     split_to_integer(card).map.with_index do |digit, index|
-      if index == 0 || index % 2 == 0
+      if index % 2 == 0
         digit * 2
       else
         digit
