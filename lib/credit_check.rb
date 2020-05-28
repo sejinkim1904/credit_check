@@ -1,37 +1,27 @@
-card_number = "5541808923795240"
+require './lib/credit_card'
 
-def luhn(card)
-  if sum_digits(card).reduce(:+) % 10 == 0
-    print "The number #{card} is valid!"
+def credit_check
+  puts "Enter a credit card number you wish to validate:"
+
+  card = CreditCard.new(gets.chomp)
+
+  if card.is_valid?
+    puts "The number #{card.card_number} is valid!"
   else
-    print "The number #{card} is invalid!"
+    puts "The number #{card.card_number} is invalid!"
+  end
+
+  check_another
+end
+
+def check_another
+  puts "Would you like to check another card? (Y/N)"
+
+  answer = gets.chomp.capitalize
+
+  if answer == "Y"
+    credit_check
   end
 end
 
-def split_to_integer(card)
-  card.chars.map do |digit|
-    digit.to_i
-  end
-end
-
-def multiply_digits(card)
-  split_to_integer(card).map.with_index do |digit, index|
-    if index == 0 || index % 2 == 0
-      digit * 2
-    else
-      digit
-    end
-  end
-end
-
-def sum_digits(card)
-  multiply_digits(card).map do |digit|
-    if digit.to_s.length == 2
-      digit.to_s.chars.map { |num| num.to_i }.reduce(:+)
-    else
-      digit
-    end
-  end
-end
-
-luhn(card_number)
+credit_check
